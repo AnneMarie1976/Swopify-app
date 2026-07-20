@@ -158,7 +158,7 @@
 
 <div class="container">
     
-    <!-- INTRO-SEKTION (Text till vänster, din lånade bild till höger) -->
+    <!-- INTRO-SEKTION -->
     <div class="intro-sektion">
         <div class="intro-text">
             <h1 class="logo-text">Swop<span>ify</span> 🔄</h1>
@@ -194,7 +194,7 @@
 </footer>
 <!-- JAVASCRIPT: LOGIK OCH FUNKTIONER -->
 <script>
-    // En lista med tre färdiga start-produkter (objekt) //
+    // En lista med tre färdiga start-produkter (objekt)
     let produkter = [
         { 
             namn: "Gamla gummistövlar", 
@@ -217,16 +217,16 @@
         
     ];
 
-    // Funktion för att rita ut alla produkter på skärmen //
+    // Funktion för att rita ut alla produkter på skärmen 
     function visaProdukter() {
         let marknadDiv = document.getElementById("marknad");
-        marknadDiv.innerHTML = ""; // Tömmer marknaden innan vi ritar om den //
+        marknadDiv.innerHTML = ""; // Tömmer marknaden innan vi ritar om den 
 
-        // Loopa igenom vår lista med produkter //
+        // Loopa igenom vår lista med produkter 
         for (let i = 0; i < produkter.length; i++) {
-            let p = produkter[i]; // Plockar ut aktuellt objekt //
+            let p = produkter[i]; // Plockar ut aktuellt objekt 
             
-            // Bygger upp HTML-kortet med data från objektet och lägger till det på sidan //
+            // Bygger upp HTML-kortet med data från objektet och lägger till det på sidan 
             marknadDiv.innerHTML += `
                 <div class="produkt-kort">
                     <img src="${p.bild}" alt="${p.namn}">
@@ -243,22 +243,22 @@
         }
     }
 
-    // Funktion som körs när användaren klickar på "Publicera pryl" //
+    // Funktion som körs när användaren klickar på "Publicera pryl" 
     function laggTillProdukt() {
         let namnInput = document.getElementById("prod-namn").value;
         let katInput = document.getElementById("prod-kat").value;
         let bildInput = document.getElementById("prod-bild").value;
         let onskanInput = document.getElementById("prod-onskan").value;
 
-        // Kontrollera att användaren inte lämnat viktiga fält tomma //
+        // Kontrollera att användaren inte lämnat viktiga fält tomma 
         if (namnInput == "" || onskanInput == "") {
             alert("Fyll i vad du har och vad du vill ha först!");
             return;
         }
 
-        // Om användaren inte skickar med en bildlänk, ge en slumpmässig bild automatiskt //
+        // Om användaren inte skickar med en bildlänk, ge en slumpmässig bild automatiskt 
         if (bildInput == "") {
-            bildInput = "https://picsum.photos" + Math.random();
+            bildInput = "https://picsum.photos/200" + Math.random();
         }
 
         // Skapa ett nytt objekt med all information //
@@ -269,10 +269,10 @@
             bild: bildInput
         };
 
-        // Skjut in det nya objektet i vår lista //
+        // Skjut in det nya objektet i vår lista 
         produkter.push(nyProdukt);
 
-        // Uppdatera skärmen direkt så att det nya kortet syns //
+        // Uppdatera skärmen direkt så att det nya kortet syns 
         visaProdukter();
 
         // Töm textfälten i formuläret //
@@ -281,13 +281,13 @@
         document.getElementById("prod-onskan").value = "";
     }
 
-    // Funktion när man klickar på "Erbjud byte!" //
-    // Tecknet ` är en grav accent (backtick på engelska) och används i JavaScript för att ge en mer kraftfull och flexibel syntax för att arbeta med strängar.//
+    // Funktion när man klickar på "Erbjud byte!" 
+    // Tecknet ` är en grav accent (backtick på engelska) och används i JavaScript för att ge en mer kraftfull och flexibel syntax för att arbeta med strängar.
     function bytProdukt(index) {
         alert(`Ett meddelande har skickats om att du vill byta till dig: ${produkter[index].namn}!`);
     }
 
-    // Kör igång funktionen en gång direkt när sidan startar så startprylarna syns //
+    // Kör igång funktionen en gång direkt när sidan startar så startprylarna syns 
     visaProdukter();
 </script>
 
